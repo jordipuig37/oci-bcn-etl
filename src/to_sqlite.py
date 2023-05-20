@@ -10,14 +10,14 @@ def read_stg_json(filename: str) -> pd.DataFrame:
     return pd.DataFrame(actual_data)
 
 
-def write_to_sqlite(df: pd.DataFrame) -> None:
+def write_to_sqlite(df: pd.DataFrame, table_name: str) -> None:
     with sqlite3.Connection("data/final.db") as con:
-        df.to_sql("TABLENAME", con, if_exists="append")
+        df.to_sql(table_name, con, if_exists="append")
 
 
 def main():
     tabular_data = read_stg_json("data/oci.json")
-    write_to_sqlite(tabular_data)
+    write_to_sqlite(tabular_data, "MAIN_TABLE")
 
 
 if __name__ == "__main__":

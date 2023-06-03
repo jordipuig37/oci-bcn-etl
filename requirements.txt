@@ -1,3 +1,7 @@
 requests
 pandas
 pytest
+mypy
+flake8
+pandas-stubs
+types-requests

@@ -27,7 +27,6 @@ def write_to_sqlite(dest: str, df: pd.DataFrame, table_name: str) -> None:
 renamer = {
     'register_id': None,
     'name': None,
-    'institution_id': None,
     'institution_name': None,
     'created': None,
     'modified': None,
@@ -63,8 +62,8 @@ def transform_rename(inp_df: pd.DataFrame) -> pd.DataFrame:
 
 def transform_filter_nulls(inp_df: pd.DataFrame) -> pd.DataFrame:
     """Filter rows with null in some key fields."""
-
-    return inp_df[inp_df.isna().sum(axis=1).apply(lambda x: x < 10)]
+    key_fields = ["register_id", "name"]
+    return inp_df[inp_df[key_fields].notnull().all(axis=1)]
 
 
 def standarize_telephone(tel: str) -> int:

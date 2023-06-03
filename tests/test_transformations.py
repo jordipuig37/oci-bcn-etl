@@ -4,7 +4,6 @@ import pandas as pd
 from src.to_sqlite import standarize_telephone, transform_telephone, transform_filter_nulls
 
 
-
 @pytest.fixture
 def input_data():
     # Create the source DataFrame for testing

@@ -19,7 +19,7 @@ def args():
 def test_download(args):
     download_json(args)
     data_files = os.listdir("data")
-    assert "oci.json" in data_files
+    assert utils.generate_daily_filename() in data_files
 
 
 # Tests from the to_sqlite module

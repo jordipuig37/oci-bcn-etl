@@ -17,7 +17,7 @@ jobs:
           cahce: pip
 
       - name: Install dependencies
-        run: pip install mypy flake8
+        run: pip install -r requirements.txt
 
       - name: Run mypy
         run: mypy .

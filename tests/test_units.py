@@ -56,10 +56,12 @@ def test_read_json(args, sample_json: dict):
     with open(TEST_FILE_NAME, "w") as ts:
         json.dump(sample_json, ts)
     df = read_stg_json(TEST_FILE_NAME)
+
     assert df is not None
 
 
 def test_to_sqlite(args, sample_df):
     dest_db = os.path.join(args.data_root, args.final_db)
     write_to_sqlite(dest_db, sample_df, "test_table")
+
     assert True  # just assert that execution completed

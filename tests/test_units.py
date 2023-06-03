@@ -41,10 +41,11 @@ def sample_json() -> dict:
     }
     return sample_data
 
+
 @pytest.fixture
 def sample_df() -> pd.DataFrame:
     sample_data = {
-        "a": [i    for i in range(100)],
+        "a": [i for i in range(100)],
         "b": [j*j for j in range(100)]
     }
     return pd.DataFrame(sample_data)

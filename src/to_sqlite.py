@@ -2,6 +2,7 @@ import json
 import os
 import re
 import sqlite3
+import datetime as dt
 import pandas as pd
 
 from . import utils
@@ -87,6 +88,12 @@ def transform_telephone(inp_df: pd.DataFrame) -> pd.DataFrame:
 
 
 @utils.use_copy
+def transform_add_tst_rec(inp_df: pd.DataFrame) -> pd.DataFrame:
+    inp_df["tst_rec"] = dt.datetime.now()
+    return inp_df
+
+
+@utils.use_copy
 def main_transformation(inp_df: pd.DataFrame) -> pd.DataFrame:
     """Apply all the transformations to the input dataframe.
     Return a new dataframe with the processed data.
@@ -95,6 +102,7 @@ def main_transformation(inp_df: pd.DataFrame) -> pd.DataFrame:
     out_df = out_df[list(renamer.keys())]  # select fields
     out_df = transform_rename(out_df)
     out_df = transform_telephone(out_df)
+    out_df = transform_add_tst_rec(out_df)
 
     return out_df
 

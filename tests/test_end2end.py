@@ -5,7 +5,6 @@ from src.download_json import main as download_json
 from src.to_sqlite import main as to_sqlite
 
 
-
 @pytest.fixture
 def args():
     return utils.args_from_config("config.ini")
